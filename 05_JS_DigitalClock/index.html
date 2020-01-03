@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DigitalClock</title>
+    <style>
+        body, html {
+            height: 100%;
+        }
+        body{
+            background-image: url("img/bg.jpg");            
+            background-size: cover;
+            background-repeat:no-repeat;
+            background-position: center; 
+            height:100%;
+        }
+        .mytitle{
+            font-family: "微軟黑正體";
+            font-weight: bolder;
+            font-size: 5rem;
+            color:rgb(251, 118, 41);
+        }
+        .D{
+            background-image: url("img/D.png");
+            background-repeat:no-repeat;
+            width: 500px;
+            height: 500px;
+        }
+        .H{
+            background-image: url("img/H.png");
+            background-repeat:no-repeat;
+            width: 500px;
+            height: 500px;
+        }
+        .M{
+            background-image: url("img/M.png");
+            background-repeat:no-repeat;
+            width: 500px;
+            height: 500px;
+        }
+        .S{
+            background-image: url("img/S.png");
+            background-repeat:no-repeat;
+            width: 500px;
+            height: 500px;
+        }
+        .num1{
+            background-image: url("img/1.png");
+            background-repeat:no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .num2{
+            background-image: url("img/2.png");
+            background-repeat:no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .num3{
+            background-image: url("img/3.png");
+            background-repeat:no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .num4{
+            background-image: url("img/4.png");
+            background-repeat:no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .num5{
+            background-image: url("img/5.png");
+            background-repeat:no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .num6{
+            background-image: url("img/6.png");
+            background-repeat:no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .num7{
+            background-image: url("img/7.png");
+            background-repeat:no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .num8{
+            background-image: url("img/8.png");
+            background-repeat:no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .num9{
+            background-image: url("img/9.png");
+            background-repeat:no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .num0{
+            background-image: url("img/0.png");
+            background-repeat:no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .colon{
+            background-image: url("img/colon.png");
+            background-repeat:no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .afterDiv{
+            display: flex;
+            flex-direction: row;
+        }        
+    </style>
+</head>
+
+<body>
+
+   <div class="bg">
+   <h1 class="mytitle">第二波特工加入拯救紐約已經過了</h1>  
+   <div class="main">
+   
+    <div id="afterD" class="afterDiv">
+        <div id="d1"></div>
+        <div id="d2"></div>
+        <div id="d3"></div>
+        <div id="d4"></div>
+        <img src="img/D.png">
+    </div>    
+    
+    <div id="afterH" class="afterDiv">
+        <div id="h1"></div>
+        <div id="h2"></div>
+        <img src="img/H.png">
+    </div>    
+
+    <div id="afterM" class="afterDiv">
+        <div id="m1"></div>
+        <div id="m2"></div>
+        <img src="img/M.png">
+    </div>    
+
+    <div id="afterS" class="afterDiv">
+        <div id="s1"></div>
+        <div id="s2"></div>
+        <img src="img/S.png">
+    </div>
+
+   </div>
+   </div>
+
+</body>
+
+<script>
+    function time(){
+        let gameobTime = new Date("2016-03-08T13:00:00");//PC版遊戲開始時間
+        let gameobTimeS = gameobTime.getTime()/1000;//得到遊戲開始時間的(毫秒ms)除1000轉成(秒s)
+        let nowTime = new Date();//現在時間
+        let nowTimeS = nowTime.getTime()/1000;//得到現在時間的(毫秒ms)除1000轉成(秒s)
+        let afterS = nowTimeS-gameobTimeS;//得到相差的秒數
+
+
+        let getSec = Math.floor(afterS);//得到相差的秒數
+        let getMin = Math.floor(getSec/60);//得到相差的分鐘
+        let getHour = Math.floor(getMin/60);//得到相差的小時
+        let getDay = Math.floor(getHour/24);//得到相差的天數
+
+      
+
+        let d1 = Math.floor(getDay/10/10/10); //得到相差天數的第一個值
+        let d2 = Math.floor(getDay/10/10)%10; //得到相差天數的第二個值
+        let d3 = Math.floor(getDay/10)%10;    //得到相差天數的第三個值
+        let d4 = Math.floor(getDay)%10;       //得到相差天數的第四個值
+
+        let h1 = Math.floor(getHour%24/10);   //得到相差小時的第一個值
+        let h2 = Math.floor(getHour%24%10);   //得到相差小時的第二個值
+        
+        let m1 = Math.floor(getMin%60/10);    //得到相差分鐘的第一個值
+        let m2 = Math.floor(getMin%60%10);    //得到相差分鐘的第二個值
+        
+        let s1 = Math.floor(getSec%60/10);    //得到相差秒數的第一個值
+        let s2 = Math.floor(getSec%60%10);    //得到相差秒數的第二個值
+
+
+
+        //年月日時分秒 禮拜幾
+        // let now_year = nowTime.getFullYear();
+        // let now_moth = nowTime.getMonth()+1;
+        // let now_day = nowTime.getDate();
+        // let now_hour = nowTime.getHours();
+        // let now_min = nowTime.getMinutes();
+        // let now_sec = nowTime.getSeconds();
+
+        // let now_weekday = nowTime.getDay();
+
+        //天數
+        document.getElementById("d1").className = "num" + d1;
+        document.getElementById("d2").className = "num" + d2;
+        document.getElementById("d3").className = "num" + d3;
+        document.getElementById("d4").className = "num" + d4;
+
+        //小時
+        document.getElementById("h1").className = "num" + h1;
+        document.getElementById("h2").className = "num" + h2;
+
+        //分鐘
+        document.getElementById("m1").className = "num" + m1;
+        document.getElementById("m2").className = "num" + m2;
+
+        //秒
+        document.getElementById("s1").className = "num" + s1;
+        document.getElementById("s2").className = "num" + s2;
+
+        setTimeout(time,1000);
+
+    }
+    time();
+</script>
+</html> 
